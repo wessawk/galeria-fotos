@@ -1,72 +1,128 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Wesley ❤️ Wend</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>💖 Nosso Cantinho</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ffe4ec;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .login-container {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      text-align: center;
+      z-index: 10;
+    }
+
+    h2 {
+      color: #d63384;
+      margin-bottom: 20px;
+    }
+
+    input[type="password"] {
+      padding: 10px;
+      border: 2px solid #d63384;
+      border-radius: 10px;
+      outline: none;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #d63384;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: float 10s linear infinite;
+      opacity: 0.6;
+    }
+
+    .heart:before, .heart:after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart:before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart:after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        bottom: -50px;
+        left: calc(100vw * var(--x));
+      }
+      100% {
+        bottom: 100vh;
+        left: calc(100vw * var(--x) + 50px);
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- Container de corações flutuantes -->
-  <div id="floatingHearts"></div>
 
-  <!-- Seção principal -->
-  <section class="hero-section">
-    <h1 class="hero-title">Wesley 💕 Wend</h1>
-    <h2 class="typing-text">Feliz Dia dos Namorados, meu amor!</h2>
-    <audio id="backgroundMusic" src="audio/musica.mp3"></audio>
-  </section>
-
-  <!-- Botão de música acima da galeria -->
-  <div class="music-button-wrapper">
-    <button id="playButton" class="music-button">❤️ Tocar Nossa Música</button>
+  <div class="login-container" id="login">
+    <h2>💌 Bem-vindo ao nosso cantinho!</h2>
+    <p>Digite a senha para entrar nesse momento especial</p>
+    <input type="password" id="senha" placeholder="Senha mágica">
+    <button onclick="verificarSenha()">Entrar</button>
   </div>
 
-  <!-- Galeria de fotos -->
-  <section class="gallery-section">
-    <h2 class="gallery-title">Nossas Memórias</h2>
-    <div class="photo-grid">
-      <img src="images/foto1.jpeg" alt="Foto 1" class="gallery-photo">
-      <img src="images/foto2.jpeg" alt="Foto 2" class="gallery-photo">
-      <img src="images/foto3.jpeg" alt="Foto 3" class="gallery-photo">
-      <img src="images/foto4.jpeg" alt="Foto 4" class="gallery-photo">
-      <img src="images/foto5.jpeg" alt="Foto 5" class="gallery-photo">
-      <img src="images/foto6.jpeg" alt="Foto 6" class="gallery-photo">
-      <img src="images/foto10.jpeg" alt="Foto 10" class="gallery-photo">
-      <img src="images/foto8.jpeg" alt="Foto 8" class="gallery-photo">
-      <img src="images/foto7.jpeg" alt="Foto 7" class="gallery-photo">
-      <img src="images/foto14.jpeg" alt="Foto 14" class="gallery-photo">
-      <img src="images/foto12.jpeg" alt="Foto 12" class="gallery-photo">
-      <img src="images/foto11.jpeg" alt="Foto 11" class="gallery-photo">
-      <img src="images/foto15.jpeg" alt="Foto 15" class="gallery-photo">
-      <img src="images/foto16.jpeg" alt="Foto 16" class="gallery-photo">
-      <img src="images/foto17.jpeg" alt="Foto 17" class="gallery-photo">
-      <img src="images/foto18.jpeg" alt="Foto 18" class="gallery-photo">
-      <img src="images/foto19.jpeg" alt="Foto 19" class="gallery-photo">
-      <img src="images/foto20.jpeg" alt="Foto 20" class="gallery-photo">
-      <img src="images/foto21.jpeg" alt="Foto 21" class="gallery-photo">
-      <img src="images/foto24.jpeg" alt="Foto 24" class="gallery-photo">
-      <img src="images/foto27.jpeg" alt="Foto 27" class="gallery-photo">
-      <img src="images/foto28.jpeg" alt="Foto 28" class="gallery-photo">
-      <img src="images/foto13.jpeg" alt="Foto 13" class="gallery-photo">
-      <img src="images/foto9.jpeg" alt="Foto 9" class="gallery-photo">
+  <script>
+    const senhaCorreta = "wxw"; // 🩷 Troque aqui
 
+    function verificarSenha() {
+      const entrada = document.getElementById('senha').value;
+      if (entrada === senhaCorreta) {
+        document.getElementById('login').style.display = 'none';
+        // Aqui você pode redirecionar para o conteúdo verdadeiro:
+        window.location.href = "home.html";
+      } else {
+        alert("Senha incorreta 💔");
+      }
+    }
 
-    </div>
-  </section>
+    // Cria corações flutuantes
+    for (let i = 0; i < 30; i++) {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.style.setProperty("--x", Math.random());
+      heart.style.left = `${Math.random() * 100}%`;
+      heart.style.animationDuration = `${5 + Math.random() * 5}s`;
+      heart.style.opacity = `${0.3 + Math.random() * 0.5}`;
+      document.body.appendChild(heart);
+    }
+  </script>
 
-  <!-- Raspe para ver a mensagem -->
-<section class="scratch-section">
-  <h2 class="scratch-title">Raspe para ver a mensagem</h2>
-  <div style="position: relative; width: 300px; height: 200px; margin: auto;">
-    <canvas id="messageCanvas" width="300" height="200" style="position: absolute; top: 0; left: 0;"></canvas>
-    <canvas id="scratchCanvas" width="300" height="200" style="position: absolute; top: 0; left: 0;"></canvas>
-  </div>
-</section>
-
-
-  <script src="script.js"></script>
 </body>
 </html>
